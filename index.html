@@ -1,7 +1,16 @@
 <html>
 <script src="typing.js"></script>
-<header><title>This is title</title></header>
-<body>
-    <p id="asd"></p>
+<link rel="stylesheet" href="styles.css">
+<header><title>Typing Game</title></header>
+<body id="body">
+    <p id="paragraph"></p>
+    <p class="centered">
+        <textarea rows="6"
+        id="typing-input"
+        placeholder="Type here"></textarea>
+    </p>
+    <div class="centered">
+        <button onclick="change_paragraph()" class="button">Another paragraph</button>
+    </div>
 </body>
 </html>

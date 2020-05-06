@@ -6,7 +6,17 @@ const paragraphs = [
     "Anything that happens, happens. Anything that, in happening, causes something else to happen, causes something else to happen. Anything that, in happening, causes itself to happen again, happens again. It doesn't necessarily do it in chronological order, though."
 ];
 
-window.onload = function(){
-    document.getElementById("asd").innerHTML = paragraphs[0];
+let paragraph_index = 0;
 
+window.onload = function(){
+    document.getElementById("paragraph").innerHTML = paragraphs[paragraph_index];
+};
+
+function change_paragraph() {
+    if (paragraph_index == paragraphs.length - 1) {
+        paragraph_index = 0
+    } else {
+        paragraph_index += 1
+    }
+    document.getElementById("paragraph").innerHTML = paragraphs[paragraph_index];
 };

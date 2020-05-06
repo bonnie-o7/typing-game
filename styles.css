@@ -1,0 +1,27 @@
+#paragraph {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.button {
+    height: 30px;
+    width: 150px;
+    font-family: "Arial";
+    background-color: tomato;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+#typing-input {
+    height: 200px;
+    width: 600px;
+    font-size: 15px;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
