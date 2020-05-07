@@ -7,16 +7,42 @@ const paragraphs = [
 ];
 
 let paragraph_index = 0;
+let seconds_left = 45;
+let countdown_id = null;
 
 window.onload = function(){
     document.getElementById("paragraph").innerHTML = paragraphs[paragraph_index];
+    document.getElementById("timer").innerHTML = seconds_left + " seconds left";
+};
+
+function timer() {
+    if (countdown_id) {
+        return;
+    }
+
+    countdown_id = setInterval(function() {
+        seconds_left -= 1;
+        document.getElementById("timer").innerHTML = seconds_left + " seconds left";
+        if (seconds_left == 0) {
+            clearInterval(countdown_id);
+        }
+    }, 1000);
 };
 
 function change_paragraph() {
     if (paragraph_index == paragraphs.length - 1) {
-        paragraph_index = 0
+        paragraph_index = 0;
     } else {
-        paragraph_index += 1
+        paragraph_index += 1;
     }
     document.getElementById("paragraph").innerHTML = paragraphs[paragraph_index];
+    reset();
 };
+
+function reset() {
+    document.getElementById("typing-input").value = "";
+    clearInterval(countdown_id);
+    countdown_id = null;
+    seconds_left = 45;
+    document.getElementById("timer").innerHTML = seconds_left + " seconds left";
+}
