@@ -11,6 +11,7 @@ let seconds_left = 45;
 let countdown_id = null;
 
 window.onload = function(){
+    // displays paragraph and timer
     document.getElementById("paragraph").innerHTML = paragraphs[paragraph_index];
     document.getElementById("timer").innerHTML = seconds_left + " seconds left";
 };
@@ -41,11 +42,11 @@ function timer() {
     if (countdown_id) {
         return;
     }
-
     countdown_id = setInterval(function() {
         seconds_left -= 1;
         document.getElementById("timer").innerHTML = seconds_left + " seconds left";
         if (seconds_left == 0) {
+            // timer turns red and typearea is disabled when time runs out
             clearInterval(countdown_id);
             document.getElementById("timer").style.color = "red";
             document.getElementById("typing-input").disabled = true;
