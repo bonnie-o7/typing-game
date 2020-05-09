@@ -16,6 +16,8 @@ window.onload = function(){
 };
 
 function handle_input(characters) {
+    timer();
+
     if (characters.length <= paragraphs[paragraph_index].length) {
         if (characters != paragraphs[paragraph_index].substr(0, characters.length)) {
             // typing input is wrong
@@ -23,6 +25,8 @@ function handle_input(characters) {
         } else if (characters.length == paragraphs[paragraph_index].length) {
             // typing input matches paragraph
             document.getElementById("paragraph").style.color = "green";
+            clearInterval(countdown_id);
+            document.getElementById("timer").style.color = "green";
         } else {
             // typing input matches so far
             document.getElementById("paragraph").style.color = "black";
@@ -31,8 +35,6 @@ function handle_input(characters) {
         // typing input is longer than paragraph
         document.getElementById("paragraph").style.color = "red";
     }
-
-    timer();
 };
 
 function timer() {
@@ -45,6 +47,8 @@ function timer() {
         document.getElementById("timer").innerHTML = seconds_left + " seconds left";
         if (seconds_left == 0) {
             clearInterval(countdown_id);
+            document.getElementById("timer").style.color = "red";
+            document.getElementById("typing-input").disabled = true;
         }
     }, 1000);
 };
@@ -65,4 +69,7 @@ function reset() {
     countdown_id = null;
     seconds_left = 45;
     document.getElementById("timer").innerHTML = seconds_left + " seconds left";
+    document.getElementById("paragraph").style.color = "black";
+    document.getElementById("timer").style.color = "black";
+    document.getElementById("typing-input").disabled = false;
 }
