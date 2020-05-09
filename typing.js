@@ -15,6 +15,26 @@ window.onload = function(){
     document.getElementById("timer").innerHTML = seconds_left + " seconds left";
 };
 
+function handle_input(characters) {
+    if (characters.length <= paragraphs[paragraph_index].length) {
+        if (characters != paragraphs[paragraph_index].substr(0, characters.length)) {
+            // typing input is wrong
+            document.getElementById("paragraph").style.color = "red";
+        } else if (characters.length == paragraphs[paragraph_index].length) {
+            // typing input matches paragraph
+            document.getElementById("paragraph").style.color = "green";
+        } else {
+            // typing input matches so far
+            document.getElementById("paragraph").style.color = "black";
+        }
+    } else {
+        // typing input is longer than paragraph
+        document.getElementById("paragraph").style.color = "red";
+    }
+
+    timer();
+};
+
 function timer() {
     if (countdown_id) {
         return;
